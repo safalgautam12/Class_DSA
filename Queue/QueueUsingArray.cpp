@@ -77,7 +77,8 @@ int main() {
     q.top();
     cout << "Popping element...................\n";
     q.pop();
-    q.top(); // This should now show the queue is empty.
-
+    q.push(1);
+    cout<<"Adding 1 to the queue...................\n";
+    q.top(); 
     return 0;
 }

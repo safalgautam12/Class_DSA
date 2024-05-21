@@ -51,7 +51,7 @@ class Queue
             cerr<<"Queue is empty\n";
         }
         
-        cout<<"top element\n";
+        cout<<"top element : ";
         cout<<front->data;
         cout<<endl;
     }

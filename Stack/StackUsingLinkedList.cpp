@@ -15,11 +15,11 @@ class Stack
 {
     public: 
     Node* head;
-    int size;
+ 
     Stack()
     {
         head=NULL;
-        size=0;
+      
     }
  
     void push(int data)
@@ -28,11 +28,15 @@ class Stack
         if (head==NULL)
         {
             head=temp;
-            size++;
             return;
         }
-        temp->next=head;// since we are adding at the beginning
-        head=temp;
+        Node *n=head;
+        while (n->next!=NULL)
+        {n=n->next;
+            
+        }
+        n->next=temp;
+        
         
         
     }
@@ -60,17 +64,38 @@ class Stack
             cerr<<"Stack is empty\n";
             return;
         }
-        if (head->next=NULL)
+        if (head->next==NULL)
         {
             delete head;
             head=NULL;
             return;
         }
         
-          Node *toDelete=head;
-    head=head->next;
-    delete toDelete;
+    Node*toDelete = head;
+    while (toDelete->next->next!=NULL)
+    {
+        toDelete=toDelete->next;
 
+    }
+    delete toDelete->next;
+    toDelete->next=NULL;
+    
+
+    }
+    void top()
+    {
+        Node *temp=head;
+        if (!isEmpty())
+        {
+            while (temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            cout<<"top = "<< temp->data;
+            cout<<endl;
+            
+        }
+        
     }
        ~Stack()
     {
@@ -90,12 +115,14 @@ int main()
     Stack s;
     cout<<"Adding 1 to the stack\n";
     s.push(1);
-    s.traverse();
-    cout<<"poppint the element\n";
+    s.top();
+    cout<<"popping the element\n";
     s.pop();
-    cout<<"pushing 2 and 3 to the stack\n";
+    cout<<"pushing 2 , 3 and 4 to the stack\n";
     s.push(2);
     s.push(3);
+    s.push(4);
+    s.top();
     s.traverse();
     cout<<"popping once\n";
     s.pop();

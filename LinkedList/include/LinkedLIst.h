@@ -184,7 +184,7 @@ public:
     // Comment: Adds a new node with the given key after the specified predecessor node.
     void add(int key, node *predecessor)
     {
-        if (predecessor == NULl)
+        if (predecessor == NULL)
         {
             cout << "Predecessor node cannot be null." << endl;
             return;
@@ -203,12 +203,12 @@ public:
     ~List()
     {
         node *current = head;      // Start with the head node
-        while (current != NULl) // Loop until current node is not null
+        while (current != NULL) // Loop until current node is not null
         {
             node *next = current->next; // Store the next node before deleting the current one
             delete current;             // Delete the current node
             current = next;             // Move to the next node
         }
-        head = tail = NULl; // Set head and tail pointers to null to indicate an empty list
+        head = tail = NULL; // Set head and tail pointers to null to indicate an empty list
     }
 };
