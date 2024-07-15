@@ -1,46 +1,47 @@
 #include <iostream>
 using namespace std;
 
-void swap(int& a, int& b) {
-    int temp = a;
+void swap(int &a, int &b)
+{
+    int temp;
+    temp = a;
     a = b;
     b = temp;
 }
 
-int partition(int arr[], int pi, int low, int high) {
-    int pivot = arr[pi];
-    int i = low - 1;
-
-    for (int j = low; j < high; j++) {
-        if (arr[j] < pivot) {
+int partition(int arr[], int l, int r)
+{
+    int i = l - 1; //-1
+    int j = l;     // 0
+    int pivot = arr[r];
+    for (j; j < r; j++)
+    {
+        if (arr[j] < pivot)
+        {
             i++;
             swap(arr[i], arr[j]);
         }
     }
-    swap(arr[i + 1], arr[high]);
+    swap(arr[i + 1], arr[r]);
     return i + 1;
 }
-
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, low, high);
-
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+void quickSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        int pi = partition(arr, l, r);
+        quickSort(arr, l, pi - 1);
+        quickSort(arr, pi + 1, r);
     }
 }
-
-int main() {
-    int arr[] = {26, 5, 37, 1, 61, 11, 59, 15, 48, 19};
-    int n = sizeof(arr) / sizeof(arr[0]);
- 
-    quickSort(arr, 0, n - 1);
-
-    cout << "Sorted array: ";
-    for (int i = 0; i < n; i++) {
+int main()
+{
+    int arr[] = {6, 3, 9, 5, 2, 8, 7};
+    quickSort(arr, 0, 6);
+    for (int i = 0; i <= 6; i++)
+    {
         cout << arr[i] << " ";
     }
-    cout << endl;
 
     return 0;
 }
